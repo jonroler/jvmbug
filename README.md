@@ -8,6 +8,9 @@ To reproduce the seg fault on jdk 1.8:
 4. cd into the base directory of the cloned repository
 5. run ./grailsw test-app (Linux) or ./grails.bat test-app (Windows)
 
-grails should execute the spock test named CrashSpec which will cause the jvm to seg fault.
+grails should execute the spock test named CrashSpec which will cause the jvm to seg fault. It is apparently crashing when JIT compiling Util.getInt() as seen in the hs_err log file:
 
-This app was created by simply running 'grails create-app' to create a new application and then adding the 2 very simple files: CrashSpec.groovy and Util.java.  I have tried pulling Crashspec.groovy and Util.java out into a standalone project, but I was unable to reproduce the bug this way.
+Current CompileTask:
+C1:   5660 4290   !   2       jvmbug.Util::getInt (114 bytes)
+
+This app was created by simply running 'grails create-app' to create a new application and then adding the 2 very simple files: CrashSpec.groovy and Util.java.  I have tried pulling Crashspec.groovy and Util.java out into a standalone project, but I have so far been unable to reproduce the bug this way.
