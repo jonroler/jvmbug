@@ -9,3 +9,5 @@ To reproduce the seg fault on jdk 1.8:
 5. run ./grailsw test-app (Linux) or ./grails.bat test-app (Windows)
 
 grails should execute the spock test named CrashSpec which will cause the jvm to seg fault.
+
+This app was created by simply running 'grails create-app' to create a new application and then adding the 2 very simple files: CrashSpec.groovy and Util.java.  I have tried pulling Crashspec.groovy and Util.java out into a standalone project, but I was unable to reproduce the bug this way.
