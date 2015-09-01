@@ -1,2 +1,11 @@
 # jvmbug
-grails application that seg faults on jdk 1.8
+
+To reproduce the seg fault on jdk 1.8:
+
+1. Install jdk 1.8.0_60.
+2. Set JAVA_HOME to jdk 1.8.0_60 directory.
+3. git clone this repository.
+4. cd into the base directory of the cloned repository
+5. run ./grailsw test-app (Linux) or ./grails.bat test-app (Windows)
+
+grails should execute the spock test named CrashSpec which will cause the jvm to seg fault.
